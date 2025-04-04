@@ -122,7 +122,23 @@ app.use(
  CORS comes from "Cross-Origin resource sharing" and is, basically, a protocol that allows or not a server to acess your website resources (routes data, api requests etc).
 
  ```js
-app.use(cors())
+app.use(
+  '/api',
+  cors({
+    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'],
+    allowedHeaders: [
+      'Content-Type',
+      'Authorization',
+      'X-Requested-With',
+      'device-remember-token',
+      'Access-Control-Allow-Origin',
+      'Origin',
+      'Accept',
+    ],
+  })
+);
  ```
 
 #### 3. Helmet
