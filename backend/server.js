@@ -17,6 +17,7 @@ const app = express();
 
 // Security Middlewares
 app.use(
+  '/api',
   rateLimit({
     windowMs: 15 * 60 * 1000,
     limit: 100,
@@ -27,7 +28,6 @@ app.use(
 app.use(helmet());
 app.use(hpp());
 app.use(
-  '/api',
   cors({
     origin: process.env.CLIENT_URL || 'http://localhost:5173',
     credentials: true,

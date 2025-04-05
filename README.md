@@ -108,6 +108,7 @@ This Codebase utilize a few security measures to protect the application from va
 
  ```js
 app.use(
+  '/api',
   rateLimit({
     windowMs: 15 * 60 * 1000,
     limit: 100,
@@ -123,7 +124,6 @@ app.use(
 
  ```js
 app.use(
-  '/api',
   cors({
     origin: process.env.CLIENT_URL || 'http://localhost:5173',
     credentials: true,
@@ -147,9 +147,7 @@ Helmet Help secure Express apps by setting HTTP response headers.
 
 ```js
 import helmet from "helmet";
-
 const app = express();
-
 app.use(helmet());
 ```
 
